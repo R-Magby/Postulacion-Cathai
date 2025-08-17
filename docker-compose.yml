@@ -1,0 +1,47 @@
+version: "3.8"
+
+services:
+
+  app:
+    build:
+      context: .
+    container_name: chatbot
+    ports:
+      - "8000:8000"     # backend
+      - "8501:8501"     # Streamlit
+    volumes:
+      - ./backend:/chatbot/backend
+      - ./frontend:/chatbot/frontend
+      - ./data/chroma:/chroma/data
+      - ./data/dir_pdfs:/data/dir_pdfs
+    depends_on:
+      - vectorstore
+      - llama
+    restart: unless-stopped
+    command: bash -c "streamlit run frontend/front.py --server.port=8501 --server.address=0.0.0.0"
+
+
+  vectorstore:
+    image: chromadb/chroma
+    ports:
+      - "8001:8000"
+    volumes:
+      - ./data/chroma:/chroma/data
+    restart: unless-stopped
+
+  llama:
+    image: ollama/ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: unless-stopped
+    entrypoint: ["/bin/bash", "-c", "\
+      ollama serve & \
+      sleep 5 && \
+      ollama pull mxbai-embed-large && \
+      ollama pull llama3.2:1b && \
+      wait"]
+
+volumes:
+  ollama_data: {}
