@@ -5,6 +5,7 @@ Ya con esto hay que ingresar a la dirreccion: `http://localhost:8501/`
 
 ## Acerca del proyecto:
 El objetivo era realizar un chatbot que reciba hasta 5 PDFs y te pueda dar respuesta en contexto a esto.
+- El codigo backend debe estar en una carpeta llamada backend y el condigo front en una llamada frontend.
 - Para ello utilicé el orquestador LangChain y para el frontend Streamlit.
 - Utilice el modelo `llama3.2:1b`, por la razon de que no tengo acceso a openAI (si no hubiera sido mi premara opcion por la cantidad de parametros que maneja), de lo modelos gratuitos es uno de los mejores y ese   modelo en especifico es liviano (1.9 GiB).
 - Contiene 3 paginas:
