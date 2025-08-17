@@ -16,6 +16,7 @@ El objetivo era realizar un chatbot que reciba hasta 5 PDFs y te pueda dar respu
 
 ## Que hay que mejorar.
 - Un mejor modelo entregaria mejores respuestas
+- Mejorar la logica usada la chroma (falta de tiempo).
 - Tuve la idea en un inicio de segun el documento identificar la preofesion, el nivel academico o  alguna otra caracteristica del usuario y entregar una respuesta en base a ello.
 - Tambien la forma en que probé el modelo fue con articulos cientificos, donde suelen haber muchas formulas y/o graficos, esto es casi incomprensible para el modelo, debido a que la lectura (PyPDFLoader) no reconoce formulas e imagenes, tengo entendido que si existen herramientas para esto.
 - El tiempo de ejecucion de las respuesta es lenta, tanto para generar respuesta y para generar el retriver, esto debido a que tiene que buscar en la base de datos, es posible mejorar esto utilizando la GPU o programando en paralelo con la CPU, tambien seria buena idea utillizar mejor el caché.
